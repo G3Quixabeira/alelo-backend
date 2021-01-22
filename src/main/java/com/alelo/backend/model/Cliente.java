@@ -1,5 +1,6 @@
 package com.alelo.backend.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Cliente {
 
     private static final long serialVersionUID =1L;

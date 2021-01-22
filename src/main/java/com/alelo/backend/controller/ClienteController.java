@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -21,6 +22,12 @@ public class ClienteController {
     @ApiOperation(value = "Lista de Clientes casdastrados")
     public List<ClienteDto> get(){
         return ClienteDto.covert(clienteRepository.findAll());
+    }
+
+    @GetMapping("/clientes/{id}")
+    @ApiOperation(value = "Consuta Cliente casdastrado pelo Id")
+    public Optional<Cliente> getById(@PathVariable Long id){
+        return clienteRepository.findById(id);
     }
 
     @PostMapping("/cliente")

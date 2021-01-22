@@ -1,16 +1,17 @@
 package com.alelo.backend.service.Interface;
 
+import com.alelo.backend.exceptions.ClienteNotFoundException;
 import com.alelo.backend.model.Cliente;
-import com.alelo.backend.model.Dto.ClienteDto;
-import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ClienteServiceInterface {
+    List<Cliente> findAll();
+    Optional<Cliente> findById(String id);
     Cliente save(Cliente cliente);
     void deleteById(Long id);
-    List<ClienteDto> findAll(String filter);
-    Optional<Cliente> findById(String id);
-    Cliente findById(Long id);
+    List<Cliente> findAll(String filter);
+    Cliente findById(Long id) throws ClienteNotFoundException;
+
 }

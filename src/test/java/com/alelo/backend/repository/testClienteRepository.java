@@ -1,12 +1,10 @@
-package com.alelo.backend.implementacao;
+package com.alelo.backend.repository;
 
 import com.alelo.backend.model.Cliente;
-import com.alelo.backend.repository.ClienteRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 

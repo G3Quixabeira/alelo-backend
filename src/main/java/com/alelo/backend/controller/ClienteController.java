@@ -1,10 +1,10 @@
 package com.alelo.backend.controller;
 
+import com.alelo.backend.exceptions.ClienteNotFoundException;
 import com.alelo.backend.model.Cliente;
 import com.alelo.backend.model.Dto.ClienteDto;
-import com.alelo.backend.repository.ClienteRepository;
+import com.alelo.backend.service.Interface.ClienteServiceInterface;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,39 +13,42 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/clientes")
 public class ClienteController {
-    @Autowired
-    private ClienteRepository clienteRepository;
+    private ClienteServiceInterface clienteServiceInterface;
 
-    @GetMapping("/clientes")
+    public ClienteController(ClienteServiceInterface clienteServiceInterface) {
+        this.clienteServiceInterface = clienteServiceInterface;
+    }
+
+    @GetMapping
     @ApiOperation(value = "Lista de Clientes casdastrados")
     public List<ClienteDto> get(){
-        return ClienteDto.covert(clienteRepository.findAll());
+        return ClienteDto.covert(clienteServiceInterface.findAll());
     }
 
-    @GetMapping("/clientes/{id}")
+    @GetMapping("/{id}")
     @ApiOperation(value = "Consuta Cliente casdastrado pelo Id")
-    public Optional<Cliente> getById(@PathVariable Long id){
-        return clienteRepository.findById(id);
+    public Cliente getById(@PathVariable Long id) throws ClienteNotFoundException {
+        return clienteServiceInterface.findById(id);
     }
 
-    @PostMapping("/cliente")
+    @PostMapping
     @ApiOperation(value = "Cadastrar um Cliente")
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente post(@RequestBody @Valid Cliente cliente){
-        return clienteRepository.save(cliente);
+        return clienteServiceInterface.save(cliente);
     }
 
-    @PutMapping("/cliente")
+    @PutMapping
     @ApiOperation(value = "Alterar um Cliente")
     public Cliente put(@RequestBody @Valid  Cliente cliente){
-        return clienteRepository.save(cliente);
+        return clienteServiceInterface.save(cliente);
     }
 
-    @DeleteMapping("/cliente")
+    @DeleteMapping("/{id}")
     @ApiOperation(value = "Deletar um Cliente")
-    public void delete(@RequestBody @Valid  Cliente cliente){
-        clienteRepository.delete(cliente);
+    public void delete(@RequestBody  @PathVariable Long id, Cliente cliente){
+        clienteServiceInterface.deleteById(id);
     }
 }

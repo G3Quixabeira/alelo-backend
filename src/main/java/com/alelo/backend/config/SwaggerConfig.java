@@ -1,6 +1,7 @@
 package com.alelo.backend.config;
 
 import org.springframework.context.annotation.Bean;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -17,8 +18,8 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.alelo.teste"))
-                .paths(regex("/api.*"))
+                .apis(RequestHandlerSelectors.basePackage("com.alelo.backend"))
+                .paths(PathSelectors.any())
                 .build()
                 .apiInfo(metaInfo());
     }

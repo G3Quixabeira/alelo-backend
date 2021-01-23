@@ -105,4 +105,8 @@ out/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-.idea
+.mvn
+target
+demo.iml
+mvnw
+mvnw.cmd

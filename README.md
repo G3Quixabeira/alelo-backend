@@ -21,7 +21,8 @@ O projeto se basea no padrão REST e trabalha com o status code padrão HTPP:
 
 ### Payload Json para Testes
 
-**Clientes** /clientes [GET/POST/PUT/DELETE]
+**Clientes** 
+/clientes [GET/POST/PUT/DELETE]
 >[GET] Retorna lista de Clientes
 
 >[POST] Adiciona um Cliente

@@ -12,6 +12,6 @@ public interface ClienteServiceInterface {
     Cliente save(Cliente cliente);
     void deleteById(Long id);
     List<Cliente> findAll(String filter);
-    Cliente findById(Long id) throws ClienteNotFoundException;
+    Optional<Cliente> findById(Long id);
 
 }

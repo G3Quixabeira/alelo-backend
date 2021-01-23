@@ -18,8 +18,8 @@ public class ClienteService implements ClienteServiceInterface {
     }
 
     @Override
-    public Cliente findById(Long id)  {
-        return clienteRepository.findById(id).orElseThrow();
+    public Optional<Cliente> findById(Long id) {
+        return clienteRepository.findById(id);
     }
 
     @Override

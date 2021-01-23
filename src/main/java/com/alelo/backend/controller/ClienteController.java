@@ -29,7 +29,7 @@ public class ClienteController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "Consuta Cliente casdastrado pelo Id")
-    public Cliente getById(@PathVariable Long id) throws ClienteNotFoundException {
+    public Optional<Cliente> getById(@PathVariable Long id){
         return clienteServiceInterface.findById(id);
     }
 

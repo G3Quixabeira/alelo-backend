@@ -45,5 +45,5 @@ O projeto se basea no padrão REST e trabalha com o status code padrão HTPP:
 }
 ```
 
->[DELETE] /{id} Apaga um usuário com base na id /{id}
+>[DELETE] /{id} Apaga um cliente com base na id /{id}
 
